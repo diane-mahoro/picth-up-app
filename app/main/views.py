@@ -5,6 +5,7 @@ from .. import db,photos
 from ..models import User
 from flask_login import login_required,current_user
 import markdown2 
+from .forms import PitchForm
 
 # Views
 @main.route('/')
@@ -49,3 +50,16 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+@main.route('/pitch',methods =['GET','POST'])
+@login_required
+def new_pitch():
+    form =PitchForm()
+    if form.validate_on_submit():
+        category=form.category.data
+        pitch=form.pitch.data
+        new_pitch=Pitch(category,pitch)
+        new_pitch.save_pitch()
+    title='YouPitch'
+    return render_template('new_pitch.html',title=title,pitch_form=form)
+

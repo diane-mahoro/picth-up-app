@@ -2,13 +2,13 @@ from flask import render_template,request,redirect,url_for
 from app import app
 from .request import get_movies,get_movie,search_movie
 from .models import pitchy
-from .forms import ReviewForm
 
-Review = reviews.Review
+
+# Pitch= pitch.Pitch
 
 
 # Views
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -16,3 +16,6 @@ def index():
     '''
     title='YouPitch'
     return render_template('index.html', title = title)
+
+
+
