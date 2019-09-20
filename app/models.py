@@ -91,8 +91,8 @@ class Pitch(db.Model):
     id=db.Column(db.Integer,primary_key = True)
     category=db.Column(db.String)
     posted=db.Column(db.DateTime, default=datetime.utcnow)
-    pitchy=db.relationship('Pitch',backref = 'role',lazy='dynamic')
-
+    user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
+    commenty=db.relationship('Comment',backref='role',lazy='dynamic')
     def save_picth(self):
         db.session.add(self)
         db.session.commit()
