@@ -9,47 +9,6 @@ from datetime import datetime
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-class User:
-    '''
-    Movie class to define Movie Objects
-    '''
-
-    def __init__(self,id,username,email,pass_word):
-        self.id =id
-        self.username=username
-        self.email = email
-        self.pass_word=pass_word
-
-
-
-class Pitch:
-
-    all_pitches = []
-
-    def __init__(self,category,pitch):
-        self. category=category
-        self.pitch =pitch
-
-
-    def save_pitch(self):
-        Pitch.all_pitches.append(self)
-
-
-    # @classmethod
-    # def clear_reviews(cls):
-    #     Review.all_reviews.clear()
-
-    @classmethod
-    def post_pitch(cls):
-
-        response = []
-
-        for pitch in cls.all_pitches:
-            # if pitch.movie_id == id:
-            response.append(pitch)
-
-        return response
-
 class User(UserMixin,db.Model):
     __tablename__='users'
     id=db.Column(db.Integer,primary_key = True)
@@ -88,14 +47,16 @@ class Pitch(db.Model):
     __tablename__='pitches'
     id=db.Column(db.Integer,primary_key = True)
     category=db.Column(db.String)
-    posted=db.Column(db.DateTime, default=datetime.utcnow)
+    pitch=db.Column(db.String)
     user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
     commenty=db.relationship('Comment',backref='role',lazy='dynamic')
-    def save_picth(self):
+    
+    
+    def save_pitch(self):
         db.session.add(self)
         db.session.commit()
 
     @classmethod
-    def get_pitch(cls,id):
+    def get_pitch(cls):
         pitches = Pitch.query.filter_by(id=id).all()
-        return reviews
+        return pitches

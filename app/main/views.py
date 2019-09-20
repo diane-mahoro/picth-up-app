@@ -2,7 +2,7 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
 from .. import db,photos
-from ..models import User
+from ..models import User,Pitch
 from flask_login import login_required,current_user
 import markdown2 
 from .forms import PitchForm
@@ -51,16 +51,20 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
-@main.route('/pitch',methods =['GET','POST'])
+@main.route('/write/pitch',methods =['GET','POST'])
 @login_required
 def new_pitch():
     form =PitchForm()
     if form.validate_on_submit():
         category=form.category.data
         pitch=form.pitch.data
-        new_pitch=Pitch(category,pitch)
+        print(category)
+        print(pitch)
+        new_pitch=Pitch(category=category,pitch=pitch,user_id=current_user.id)
         new_pitch.save_pitch()
         return redirect(url_for('.new_pitch'))
+
+        return all_pitches()
     title='YouPitch'
     return render_template('new_pitch.html',title=title,pitch_form=form)
 
