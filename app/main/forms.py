@@ -19,7 +19,7 @@ class PitchForm(FlaskForm):
 
     category = StringField('Category',validators=[Required()])
     picth = TextAreaField('The pitch', validators=[Required()])
-    submit = SubmitField('Submit')
+    submit = SubmitField('post')
 
 class CommentForm(FlaskForm):
     comment=TextAreaField('Comment',validators=[Required()])

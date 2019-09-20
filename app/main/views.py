@@ -60,6 +60,7 @@ def new_pitch():
         pitch=form.pitch.data
         new_pitch=Pitch(category,pitch)
         new_pitch.save_pitch()
+        return redirect(url_for('.new_pitch'))
     title='YouPitch'
     return render_template('new_pitch.html',title=title,pitch_form=form)
 

@@ -7,16 +7,16 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"> Watchlist </a>
+                <a class="navbar-brand" href="/"> YouPitch</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <ul class="nav navbar-nav navbar-right">
                         {% if current_user.is_authenticated %}
-                        <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
-                        <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                        <li><a href="{{url_for('main.profile',uname=current_user.username)}}">MY ACCOUNT</a></li>
+                        <li><a href="{{url_for('auth.logout')}}">LOG OUT</a></li>
                         {% else %}
-                        <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+                        <li><a href="{{url_for('auth.login')}}">LOG IN</a></li>
                         {%endif%}
                       </ul>
             </div>
