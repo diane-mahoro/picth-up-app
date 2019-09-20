@@ -1,0 +1,16 @@
+{% macro displaypitch(pitch_list) %}
+
+{% for pitchy in pitch_list %}
+<div class="row">
+
+    <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
+      <h4>Author</h4>
+      <h5>{{pitchy.Pitch.category}}</h5>
+      <p>{{pitchy.Pitch.pitch}}</p>
+    </div>
+    <!-- <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
+    </div> -->
+  </div>
+
+  {% endfor %}
+{% endmacro %}

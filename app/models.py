@@ -51,12 +51,12 @@ class Pitch(db.Model):
     user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
     commenty=db.relationship('Comment',backref='role',lazy='dynamic')
     
-    
+
     def save_pitch(self):
         db.session.add(self)
         db.session.commit()
 
     @classmethod
     def get_pitch(cls):
-        pitches = Pitch.query.filter_by(id=id).all()
+        pitches = Pitch.query.filter_by().all()
         return pitches
