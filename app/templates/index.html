@@ -4,19 +4,17 @@
 <!-- Styles block -->
 
 {% block styles%}
-    {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 {% endblock %}
 <!-- Content block -->
 {% block content %}
 
 <div class="container">
-<h1>WELCOME TO YouPitch Application hope you enjoy fully.</h1>
-{% if current_user.is_authenticated%}
-<a href="{{url_for('main.index')}}">view all pitches</a>
-{% endif%}
-<a href="{{url_for('main.new_pitch')}}">POST A PICTH</a>
-</div>
+  <h1>WELCOME TO YouPitch Application hope you enjoy fully.</h1>
+  {% if current_user.is_authenticated%}
+  {% endif%}
+  <a href="{{url_for('main.new_pitch')}}">POST A PICTH</a>
 <h3 style="color: green;text-align: center">Pitch Categories</h3>
 <br>
 <ul class="nav nav-pills nav-justified nav-fill" role="tablist">
@@ -34,31 +32,18 @@
   </li>
 </ul>
 <div class="tab-content">
-        <div id="product" class="container tab-pane active"><br>
-          {{ macro.displaypitch(productpitch) }}
-          
-        </div>
-        <div id="interview" class="container tab-pane fade"><br>
-          {{ macro.displaypitch(interviewpitch) }}
-        </div>
-        <div id="pickupline" class="container tab-pane fade"><br>
-          {{ macro.displaypitch(pickuplines)}}
-        </div>
-        <div id="promotion" class="container tab-pane fade"><br>
-          {{ macro.displaypitch(promotionpitch) }}
-        </div>
-        <ul style="list-style: none;">
-            {% for pitch in pitches %}
-            <div class="list-group">
-                <a href="#">
-                    <div class="list-item">
-                        <p>{{pitch.category}}</p>
-                    </div>
-                    <h4>{{ pitch.description }}</h4>
-                    <h6> Posted by {{user.username}}.</h6>
-                </a>
-            </div>
-            {% endfor %}
-        </ul>
-        
-{% endblock%}
+  <div id="product" class="container tab-pane active"><br>
+    {{ macro.displaypitch(productpitch) }}
+
+  </div>
+  <div id="interview" class="container tab-pane fade"><br>
+    {{ macro.displaypitch(interviewpitch) }}
+  </div>
+  <div id="pickupline" class="container tab-pane fade"><br>
+    {{ macro.displaypitch(pickuplines)}}
+  </div>
+  <div id="promotion" class="container tab-pane fade"><br>
+    {{ macro.displaypitch(promotionpitch) }}
+  </div>
+  </div>
+  {% endblock%}
