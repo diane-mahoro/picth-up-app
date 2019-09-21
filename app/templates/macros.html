@@ -1,16 +1,38 @@
 {% macro displaypitch(pitch_list) %}
-
-{% for pitchy in pitch_list %}
 <div class="row">
-
-    <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
-      <h4>Author</h4>
-      <h5>{{pitchy.Pitch.category}}</h5>
-      <p>{{pitchy.Pitch.pitch}}</p>
+  {% if pitch_list %}
+  {% for pitchy in pitch_list %}
+  <div class="col-md-6">
+    <div class="card">
+      <h3>pitchy.category</h3>
+        <p>pitchy.pitchtext</p>
     </div>
-    <!-- <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
-    </div> -->
   </div>
-
   {% endfor %}
+  {% else %}
+  {% endif%}
+</div>
+
+{% endmacro %}
+
+{% macro displayComment(comments) %}
+<ul>
+
+			{% if comments %}
+			{% for comment in comments %}
+				<div class="row text-center">
+						<a><p style="color: brown">{{ comment.description }}</p></a>
+						<small> posted by {{comment.user.username}}</small>
+				</div>
+			{% endfor %}
+			{% else %}
+
+			<h3>This post does  not does not have any comments yet !</h3>
+			{%endif%}
+
+	</ul>
+	
+			
+
+
 {% endmacro %}

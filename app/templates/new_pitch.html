@@ -6,8 +6,21 @@
     <div class="row">
         <div class="col-md-8">
         </div>
- <div class="col-md-4">
+        <div class="col-md-4">
             {{ wtf.quick_form(pitch_form) }}
+            <ul style="list-style: none;">
+                {% for pitch in pitches %}
+                <div class="list-group">
+                    <a href="#">
+                        <div class="list-item">
+                            <p>{{pitch.category}}</p>
+                        </div>
+                        <h4>{{ pitch.description }}</h4>
+                        <h6> Posted by {{user.username}}.</h6>
+                    </a>
+                </div>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>
