@@ -2,7 +2,7 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
 from .. import db,photos
-from ..models import User,Pitch,Upvote,Comment
+from ..models import User,Pitch,Upvote,Downvote,Comment
 from flask_login import login_required,current_user
 from .forms import PitchForm,CommentForm,UpVoteForm,DownVoteForm
 
@@ -16,7 +16,7 @@ def index():
     promotionpitch = Pitch.query.filter_by(category = "promotionpitch")
     productpitch = Pitch.query.filter_by(category = "productpitch")
     upvotes = Upvote.get_all_upvotes(pitch_id=Pitch.id)
-    return render_template('index.html', title = title,pitch=pitch ,pickuplines=pickuplines,interviewpitch=interviewpitch,promotionpitch=promotionpitch,productpitch=productpitch, upvotes=upvotes)
+    return render_template('comments.html', title = title,pitch=pitch ,pickuplines=pickuplines,interviewpitch=interviewpitch,promotionpitch=promotionpitch,productpitch=productpitch, upvotes=upvotes)
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -87,7 +87,7 @@ def new_comment(pitch_id):
         return redirect(url_for('.new_comment', pitch_id= pitch_id))
 
     all_comments = Comment.query.filter_by(pitch_id = pitch_id).all()
-    return render_template('comments.html', form = form, comment = all_comments, pitch = pitch )
+    return render_template('comments.html', form =form, comment = all_comments, pitch = pitch )
 
 
 @main.route('/pitch/upvote/<int:pitch_id>/upvote', methods = ['GET', 'POST'])

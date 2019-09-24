@@ -4,8 +4,14 @@
   {% for pitchy in pitch_list %}
   <div class="col-md-6">
     <div class="card">
-      <h3>{{pitchy.category}}</h3>
+      <blockquote>
         <p>{{pitchy.description}}</p>
+      </blockquote>
+
+        <a href="{{url_for('main.new_comment',pitch_id = pitchy.id)}}" class="btn btn-info"> Add a comment</a>
+				<a href="{{url_for('main.upvote',pitch_id = pitchy.id)}}" class= "btn btn-primary btn-sm"><i></i>Upvote <span>{{category.upvotes.count()}}</span></a>
+				<a href="{{url_for('main.downvote',pitch_id = pitchy.id)}}" class= "btn btn-danger btn-sm"><i class="far fa-thumbs-up"></i>Downvote <span>{{category.downvotes.count()}}</span></a>
+
     </div>
   </div>
   {% endfor %}
@@ -14,7 +20,7 @@
 </div>
 
 {% endmacro %}
-
+<!-- 
 {% macro displayComment(comments) %}
 <ul>
 
@@ -31,7 +37,7 @@
 			{%endif%}
 
 	</ul>
-	
+	 -->
 			
 
 
