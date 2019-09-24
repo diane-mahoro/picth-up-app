@@ -16,7 +16,7 @@ def index():
     promotionpitch = Pitch.query.filter_by(category = "promotionpitch")
     productpitch = Pitch.query.filter_by(category = "productpitch")
     upvotes = Upvote.get_all_upvotes(pitch_id=Pitch.id)
-    return render_template('comments.html', title = title,pitch=pitch ,pickuplines=pickuplines,interviewpitch=interviewpitch,promotionpitch=promotionpitch,productpitch=productpitch, upvotes=upvotes)
+    return render_template('index.html', title = title,pitch=pitch ,pickuplines=pickuplines,interviewpitch=interviewpitch,promotionpitch=promotionpitch,productpitch=productpitch, upvotes=upvotes)
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -77,9 +77,9 @@ def new_comment(pitch_id):
     form = CommentForm()
     pitch=Pitch.query.get(pitch_id)
     if form.validate_on_submit():
-        description = form.description.data
+        comment = form.comment.data
 
-        new_comment = Comment(description = description, user_id = current_user._get_current_object().id, pitch_id = pitch_id)
+        new_comment = Comment(comment = comment, user_id = current_user._get_current_object().id, pitch_id = pitch_id)
         db.session.add(new_comment)
         db.session.commit()
 
@@ -104,12 +104,6 @@ def upvote(pitch_id):
     new_upvote = Upvote(pitch_id=pitch_id, user = current_user)
     new_upvote.save_upvotes()
     return redirect(url_for('main.index'))
-
-
-
-#    new_upvote = Upvote(user=current_user, pitch=pitch, vote_number=1)
-#    new_vote.save_vote()
-# return redirect(url_for('main.index'))
 
 
 @main.route('/pitch/downvote/<int:pitch_id>/downvote', methods = ['GET', 'POST'])
