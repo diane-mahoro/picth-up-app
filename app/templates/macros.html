@@ -1,19 +1,19 @@
+<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 {% macro displaypitch(pitch_list) %}
 <div class="row">
   {% if pitch_list %}
   {% for pitchy in pitch_list %}
-  <div class="col-md-6">
-    <div class="card">
-      <blockquote>
-        <p>{{pitchy.description}}</p>
-      </blockquote>
-
-        <a href="{{url_for('main.new_comment',pitch_id = pitchy.id)}}" class="btn btn-info"> Add a comment</a>
-				<a href="{{url_for('main.upvote',pitch_id = pitchy.id)}}" class= "btn btn-primary btn-sm"><i></i>Upvote <span>{{pitchy.upvotes.count()}}</span></a>
-				<a href="{{url_for('main.downvote',pitch_id = pitchy.id)}}" class= "btn btn-danger btn-sm"><i class="far fa-thumbs-up"></i>Downvote <span>{{pitchy.downvotes.count()}}</span></a>
-
+    <div class="col-md-6">
+      <p style="font-style: italic; font-size:25px;">{{pitchy.description}}</p>
+      <button style="background-color: black;"><a href="{{url_for('main.new_comment',pitch_id = pitchy.id)}}"
+          style="color: white; text-decoration:none; font-size:15px;"> Add a comment</a></button>
+      <button style="background-color: black;"><a href="{{url_for('main.upvote',pitch_id = pitchy.id)}}"
+          style="color: white; text-decoration:none; font-size:15px;"><i></i>Upvote
+          <span>{{pitchy.upvotes.count()}}</span></a></button>
+      <button style="background-color: black;"><a href="{{url_for('main.downvote',pitch_id = pitchy.id)}}"
+          style="color: white; text-decoration:none; font-size:15px;"><i class="far fa-thumbs-up"></i>Downvote
+          <span>{{pitchy.downvotes.count()}}</span></a></button>
     </div>
-  </div>
   {% endfor %}
   {% else %}
   {% endif%}
@@ -24,21 +24,23 @@
 {% macro displayComment(comments) %}
 <ul>
 
-			{% if comments %}
-			{% for comment in comments %}
-				<div class="row text-center">
-						<a><p style="color: brown">{{ comment.description }}</p></a>
-						<small> posted by {{comment.user.username}}</small>
-				</div>
-			{% endfor %}
-			{% else %}
+  {% if comments %}
+  {% for comment in comments %}
+  <div class="row text-center">
+    <a>
+      <p style="color: brown">{{ comment.description }}</p>
+    </a>
+    <small> posted by {{comment.user.username}}</small>
+  </div>
+  {% endfor %}
+  {% else %}
 
-			<h3>This post does  not does not have any comments yet !</h3>
-			{%endif%}
+  <h3>This post does not does not have any comments yet !</h3>
+  {%endif%}
 
-	</ul>
-	 
-			
+</ul>
+
+
 
 
 {% endmacro %}

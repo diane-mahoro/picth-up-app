@@ -6,62 +6,52 @@
 {% block styles%}
 {{ super() }}
 <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 {% endblock %}
 <!-- Content block -->
 {% block content %}
-
+<body>
 <div class="container">
-  <h1>WELCOME TO YouPitch Application hope you enjoy fully.</h1>
-  <a href="{{url_for('main.new_pitch')}}">POST A PICTH</a>
-<h3 style="color: green;text-align: center">Pitch Categories</h3>
-<br>
-<ul class="nav nav-pills nav-justified nav-fill" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#product">Product</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#interview">Interview</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#pickupline">Pickupline</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#promotion">Promotion</a>
-  </li>
-</ul>
-<div class="tab-content">
-  <div id="product" class="container tab-pane active"><br>
-    {{ macro.displaypitch(productpitch) }}
-
+  <div class="card">
+    <h1 style="font-family:  'Sofia';font-size: 35px;">WELCOME TO YouPitch Application hope you enjoy fully.</h1>
   </div>
-  <div id="interview" class="container tab-pane fade"><br>
-    {{ macro.displaypitch(interviewpitch) }}
-  </div>
-  <div id="pickupline" class="container tab-pane fade"><br>
-    {{ macro.displaypitch(pickuplines)}}
-  </div>
-  <div id="promotion" class="container tab-pane fade"><br>
-    {{ macro.displaypitch(promotionpitch) }}
-  </div>
-  </div>
-  <!-- <div class="fluid-container">
-    <div class="row">
-      <div class="col-md-3">
-        <h3>Product</h3> <br>
-        <p>  {{ macro.displaypitch(productpitch) }}</p> <br>
-      </div>
-      <div class="col-md-3">
-          <h3>Interview</h3>
-          <p>    {{ macro.displaypitch(interviewpitch) }}</p>
-        </div>
-        <div class="col-md-3">
-            <h3>Pickuplines</h3>
-            <p>{{ macro.displaypitch(pickuplines)}}</p>
-          </div>
-          <div class="col-md-3">
-              <h3>Promotion</h3>
-              <p>{{ macro.displaypitch(promotionpitch) }}</p>
-            </div>
+  <h3 style="color: green;text-align: center">Pitch Categories</h3>
+  <br>
+  <ul class="nav nav-pills nav-justified nav-fill" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#product">Product</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#interview">Interview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#pickupline">Pickupline</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#promotion">Promotion</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div id="product" class="container tab-pane active"><br>
+     <div style="box-sizing: border-box; background-color:lightgoldenrodyellow;">{{ macro.displaypitch(productpitch) }}
+     </div>
     </div>
-  </div> -->
+    <div id="interview" class="container tab-pane fade"><br>
+     <div  style="box-sizing: border-box; background-color:lightgoldenrodyellow;"> {{ macro.displaypitch(interviewpitch) }}
+    </div>
+    </div>
+    <div id="pickupline" class="container tab-pane fade"><br>
+      <div  style="box-sizing: border-box; background-color:lightgoldenrodyellow;">
+      {{ macro.displaypitch(pickuplines)}}
+    </div>
+    </div>
+    <div id="promotion" class="container tab-pane fade"><br>
+      <div  style="box-sizing: border-box; background-color:lightgoldenrodyellow;">
+      {{ macro.displaypitch(promotionpitch) }}
+      </div>
+    </div>
+  </div>
+  <button style="background-color: black; width:15%; height:50px; text-align: center; margin: 30px; margin-left: 300px;" ><a href="{{url_for('main.new_pitch')}}" style="color: white; text-decoration:none; font-size:15px;">POST A PICTH</a></button>
+  </div>
+</body>
   {% endblock%}

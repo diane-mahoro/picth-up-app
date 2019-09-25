@@ -2,11 +2,10 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block content %}
+<body style="background-color: lightgoldenrodyellow">
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-12">
             {{ wtf.quick_form(pitch_form) }}
             <ul style="list-style: none;">
                 {% for pitch in pitches %}
@@ -24,5 +23,5 @@
         </div>
     </div>
 </div>
-
+</body>
 {% endblock %}
