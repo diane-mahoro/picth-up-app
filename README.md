@@ -1,10 +1,11 @@
-## News_article App
+## YouPitch App
 
 **by Diane Mahoro*
 
 ##### DESCRIPTION
 
-News_article App ia an application created to help peaple get different news sources from different country and as well as the news articles.
+YouPitch App is an application created to help users to post picthes of any category within one minute
+
 
 #### Technologies
 
