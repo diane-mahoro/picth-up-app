@@ -4,7 +4,7 @@
 
 ##### DESCRIPTION
 
-YouPitch App is an application created to help users to post picthes of any category within one minute
+YouPitch App is an application created to help users to post picthes of any category within one minute,and they can be able to comment, upvote and downvote on any of the pitches posted
 
 
 #### Technologies
@@ -14,6 +14,8 @@ YouPitch App is an application created to help users to post picthes of any cate
 - Terminal
 
 - Git and Github
+
+- Database
 
 #### Contacts
 
