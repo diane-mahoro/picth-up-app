@@ -47,3 +47,4 @@ def create_app(config_name):
 
 
     return app
+© 2019 GitHub, Inc.
